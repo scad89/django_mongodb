@@ -1,11 +1,12 @@
 from pathlib import Path
-import mongoengine
+# import mongoengine
 import os
+import django_mongoengine
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-mongoengine.connect('my_database1')
+# mongoengine.connect('my_database1')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -27,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_mongoengine',
     'first_app',
 ]
 
@@ -70,6 +72,12 @@ WSGI_APPLICATION = 'my_project.wsgi.application'
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 # }
+
+MONGODB_DATABASES = {
+    "default": {
+        'name': 'my_database1',
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

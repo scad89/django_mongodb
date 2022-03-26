@@ -1,13 +1,13 @@
-from mongoengine import Document, fields, CASCADE, EmbeddedDocument
+from django_mongoengine import Document, fields, EmbeddedDocument
+from gridfs import GridFS
 
 
 class Image(Document):
-    name = fields.StringField()
-    surname = fields.StringField()
+    name = fields.StringField(max_length=30)
+    surname = fields.StringField(max_length=30)
     email = fields.EmailField()
-    date = fields.DateTimeField()
-    image = fields.ImageField()
-    tags = fields.ListField(fields.StringField(max_length=30))
+    date = fields.DateTimeField(auto_now_add=True)
+    image = fields.ImageField(upload_to='images/%Y/%m/%d/')
 
 
 class Review(Document):
@@ -16,4 +16,4 @@ class Review(Document):
     email = fields.EmailField()
     date = fields.DateTimeField()
     review = fields.StringField()
-    imageid = fields.ReferenceField(Image, reverse_delete_rule=CASCADE)
+    imageid = fields.ReferenceField(Image)

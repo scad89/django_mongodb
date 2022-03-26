@@ -1,3 +1,4 @@
+from IPython.display import Image
 from django.shortcuts import render
 from django.http import request
 from .models import Image  # Review
@@ -11,7 +12,9 @@ class MainPageView(View):
         queryset = Image.objects.all()
         return render(request,
                       'first_app/main_page.html',
-                      {'queryset': queryset}
+                      {
+                          'queryset': queryset,
+                      }
                       )
 
 

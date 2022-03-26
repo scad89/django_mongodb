@@ -4,6 +4,15 @@
 
 
 {% block content %}
-    {{ queryset }}
+    {% for i in queryset %}
+        {{ i.name }}
+        {{ i.surname}}
+        {{ i.email }}
+        {{ i.date }}
+        {{ i.image }}<br>
+    {% endfor %}
+
+
+
 
 {% endblock %}
